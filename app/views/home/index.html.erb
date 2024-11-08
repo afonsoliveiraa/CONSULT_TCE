@@ -1,0 +1,44 @@
+<%= form_with url: unidades_path, method: :get do |form| %>
+  <div>
+    <%= form.label :codigo_municipio, "Código do Município" %>
+    <%= form.text_field :codigo_municipio, value: params['codigo_municipio']  %>
+  </div>
+
+  <div>
+    <%= form.label :exercicio_orcamento, "Exercício Orçamentário" %>
+    <%= form.text_field :exercicio_orcamento, value: params['exercicio_orcamento'] %>
+  </div>
+
+  <div>
+    <%= form.submit "Enviar" %>
+  </div>
+<% end %>
+
+<% if @unidades %>
+    <table>
+    <thead>
+      <tr>
+        <th>Código do Município</th>
+        <th>Exercício Orçamentário</th>
+        <th>Código do Órgão</th>
+        <th>Código da Unidade</th>
+        <th>Código do Tipo de Unidade</th>
+        <th>Nome da Unidade</th>
+        <th>Tipo de Administração da Unidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @unidades.each do |unidade| %>
+        <tr>
+          <td><%= unidade["codigo_municipio"] %></td>
+          <td><%= unidade["exercicio_orcamento"] %></td>
+          <td><%= unidade["codigo_orgao"] %></td>
+          <td><%= unidade["codigo_unidade"] %></td>
+          <td><%= unidade["codigo_tipo_unidade"] %></td>
+          <td><%= unidade["nome_unidade"] %></td>
+          <td><%= unidade["tipo_administracao_unidade"] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
